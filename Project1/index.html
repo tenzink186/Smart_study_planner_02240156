@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Session Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="app-container">
+        <header class="app-header">
+            <h1>Smart Study Session Planner</h1>
+            <p class="subtitle">Smart study sessions tailored to your energy, schedule & difficulty of the module</p>
+        </header>
+
+        <section class="session-creator" aria-labelledby="creator-title">
+            <h2 id="creator-title">Create New Study Session</h2>
+            <form id="sessionForm" novalidate>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" required minlength="2" maxlength="50">
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty (1-5)</label>
+                        <input type="range" id="difficulty" min="1" max="5" value="3">
+                        <span class="range-value" id="difficultyValue">3</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="energy">Energy Level (1-5)</label>
+                        <input type="range" id="energy" min="1" max="5" value="3">
+                        <span class="range-value" id="energyValue">3</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Available Time (minutes)</label>
+                    <input type="number" id="duration" required min="15" max="240">
+                </div>
+
+                <button type="submit" class="btn btn-primary"> Start Study Session</button>
+            </form>
+        </section>
+
+        <section id="activeSession" class="active-session hidden" aria-live="polite">
+            <h2>Current Session Notes</h2>
+            <textarea id="sessionNotes" placeholder="Take notes here... App will generate review questions"></textarea>
+            <button id="generateQuestions" class="btn btn-secondary"> Generate Review Questions</button>
+            <div id="questionsContainer"></div>
+            <button id="completeSession" class="btn btn-success"> Complete Session</button>
+        </section>
+
+        <section class="sessions-history" aria-labelledby="history-title">
+            <h2 id="history-title">Study Sessions</h2>
+            <div id="sessionsList" class="sessions-grid">
+            </div>
+            <div id="statsSummary" class="stats"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
