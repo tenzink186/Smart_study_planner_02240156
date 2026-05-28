@@ -30,7 +30,7 @@ body {
     line-height: 1.6;
 }
 
-/* ── Layout ───────────────────────────────────────────────────────────────── */
+/* Layout */
 
 .app-container {
     max-width: 900px;
@@ -57,7 +57,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* ── Form Sections ────────────────────────────────────────────────────────── */
+/* Form Sections */
 
 .session-creator,
 .active-session {
@@ -118,7 +118,7 @@ textarea {
     margin-left: 0.5rem;
 }
 
-/* ── Error States ─────────────────────────────────────────────────────────── */
+/* Error States */
 
 .error-message {
     color: var(--danger);
@@ -133,7 +133,7 @@ textarea {
     box-shadow: 0 0 0 3px rgba(239,68,68,.1);
 }
 
-/* ── Buttons ──────────────────────────────────────────────────────────────── */
+/* Buttons */
 
 .btn {
     padding: 0.875rem 2rem;
@@ -178,7 +178,7 @@ textarea {
     margin-bottom: 1.25rem;
 }
 
-/* ── Sessions Grid ────────────────────────────────────────────────────────── */
+/* Sessions Grid */
 
 .sessions-history h2 {
     margin-bottom: 1rem;
@@ -211,7 +211,7 @@ textarea {
     font-size: 1.2rem;
 }
 
-/* ── Review Questions ─────────────────────────────────────────────────────── */
+/* Review Questions */
 
 .question {
     background: #f1f5f9;
@@ -221,7 +221,7 @@ textarea {
     font-size: 0.95rem;
 }
 
-/* ── Stats ────────────────────────────────────────────────────────────────── */
+/* Stats */
 
 .stats {
     background: var(--bg-secondary);
@@ -234,12 +234,12 @@ textarea {
 .stats h3 { margin-bottom: 0.5rem; }
 .stats p  { color: var(--text-secondary); margin-bottom: 0.25rem; }
 
-/* ── Status Labels ────────────────────────────────────────────────────────── */
+/* Status Labels */
 
 .completed { color: var(--success); font-weight: 600; }
 .pending   { color: var(--warning); font-weight: 600; }
 
-/* ── Empty State ──────────────────────────────────────────────────────────── */
+/* Empty State */
 
 .empty-state {
     color: var(--text-secondary);
@@ -247,11 +247,11 @@ textarea {
     padding: 1rem 0;
 }
 
-/* ── Utility ──────────────────────────────────────────────────────────────── */
+/* Utility */
 
 .hidden { display: none !important; }
 
-/* ── Responsive ───────────────────────────────────────────────────────────── */
+/* Responsive */
 
 @media (max-width: 768px) {
     .app-container { padding: 1rem; }
