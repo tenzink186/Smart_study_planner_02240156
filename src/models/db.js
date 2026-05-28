@@ -133,7 +133,7 @@ async function initDb() {
     _db.run('PRAGMA foreign_keys = ON');
     createSchema();
 
-    console.log(` Database ready → ${DB_PATH}`);
+    console.log(`Database ready → ${DB_PATH}`);
     return { prepare, exec };
 }
 
