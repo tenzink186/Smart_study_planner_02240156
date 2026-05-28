@@ -13,10 +13,10 @@
     <main class="app-container">
         <header class="app-header">
             <h1>Smart Study Session Planner</h1>
-            <p class="subtitle">Smart study sessions tailored to your energy, schedule &amp; difficulty of the module</p>
+            <p class="subtitle">Smart study sessions tailored to your energy, schedule & difficulty of the module</p>
         </header>
 
-        <!-- ── Create Session Form ─────────────────────────────────────────── -->
+        <!--  Create Session Form -->
         <section class="session-creator" aria-labelledby="creator-title">
             <h2 id="creator-title">Create New Study Session</h2>
             <form id="sessionForm" novalidate>
@@ -29,12 +29,12 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="difficulty">Difficulty (1–5)</label>
+                        <label for="difficulty">Difficulty (1-5)</label>
                         <input type="range" id="difficulty" min="1" max="5" value="3">
                         <span class="range-value" id="difficultyValue">3</span>
                     </div>
                     <div class="form-group">
-                        <label for="energy">Energy Level (1–5)</label>
+                        <label for="energy">Energy Level (1-5)</label>
                         <input type="range" id="energy" min="1" max="5" value="3">
                         <span class="range-value" id="energyValue">3</span>
                     </div>
@@ -47,11 +47,11 @@
                     <span class="error-message" aria-live="polite"></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary">▶ Start Study Session</button>
+                <button type="submit" class="btn btn-primary"> Start Study Session</button>
             </form>
         </section>
 
-        <!-- ── Active Session Panel ───────────────────────────────────────── -->
+        <!-- Active Session Panel -->
         <section id="activeSession" class="active-session hidden" aria-live="polite">
             <h2>Current Session Notes</h2>
             <textarea id="sessionNotes"
@@ -63,7 +63,7 @@
             <div id="questionsContainer"></div>
         </section>
 
-        <!-- ── Session History ────────────────────────────────────────────── -->
+        <!-- Session History -->
         <section class="sessions-history" aria-labelledby="history-title">
             <h2 id="history-title">Study Sessions</h2>
             <div id="sessionsList" class="sessions-grid"></div>
