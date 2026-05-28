@@ -11,14 +11,14 @@ const DB_PATH = path.resolve(process.env.DB_PATH || './database.sqlite');
 // The raw sql.js Database instance — set once during initDb()
 let _db = null;
 
-// ── Persistence ───────────────────────────────────────────────────────────────
+// ── Persistence 
 
 /** Saves the current in-memory database to the .sqlite file on disk */
 function persist() {
     fs.writeFileSync(DB_PATH, Buffer.from(_db.export()));
 }
 
-// ── Wrapper ───────────────────────────────────────────────────────────────────
+// Wrapper 
 
 /**
  * Prepares a parameterised SQL statement.
@@ -79,7 +79,7 @@ function exec(sql) {
     persist();
 }
 
-// ── Schema ────────────────────────────────────────────────────────────────────
+//  Schema 
 
 function createSchema() {
     // sessions — one row per study session
@@ -113,7 +113,7 @@ function createSchema() {
     persist();
 }
 
-// ── Init ──────────────────────────────────────────────────────────────────────
+//  Init 
 
 /**
  * Initialises sql.js and the database schema.
