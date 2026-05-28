@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label for="subject">Subject</label>
                     <input type="text" id="subject" required minlength="2" maxlength="50"
-                           placeholder="e.g. Web Technologies">
+                           placeholder="e.g. Web Application Development">
                     <span class="error-message" aria-live="polite"></span>
                 </div>
 
@@ -55,10 +55,10 @@
         <section id="activeSession" class="active-session hidden" aria-live="polite">
             <h2>Current Session Notes</h2>
             <textarea id="sessionNotes"
-                      placeholder="Take notes here… the app will generate review questions from keywords."></textarea>
+                      placeholder="Take notes here… "></textarea>
             <div class="btn-row">
-                <button id="generateQuestions" class="btn btn-secondary">💡 Generate Review Questions</button>
-                <button id="completeSession"   class="btn btn-success">  ✅ Complete Session</button>
+                <button id="generateQuestions" class="btn btn-secondary"> Generate Review Questions</button>
+                <button id="completeSession"   class="btn btn-success"> Complete Session</button>
             </div>
             <div id="questionsContainer"></div>
         </section>
