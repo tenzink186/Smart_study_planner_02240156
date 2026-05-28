@@ -47,7 +47,7 @@ async function startServer() {
     app.use(errorHandler);
 
     app.listen(PORT, () => {
-        console.log(`✅  Study Planner server running → http://localhost:${PORT}`);
+        console.log(`Smart Study Planner server running → http://localhost:${PORT}`);
     });
 }
 
