@@ -9,7 +9,7 @@ const API_BASE = '/api';
 // Tracks the id of the session currently being worked on
 let currentSessionId = null;
 
-// ── Initialisation ────────────────────────────────────────────────────────────
+//  Initialisation
 
 document.addEventListener('DOMContentLoaded', initializeApp);
 
@@ -19,7 +19,7 @@ async function initializeApp() {
     await refreshView();   // load sessions and stats from the backend
 }
 
-// ── Event Listeners ───────────────────────────────────────────────────────────
+//Event Listeners
 
 /** Attaches all DOM event listeners once on page load */
 function setupEventListeners() {
@@ -36,7 +36,7 @@ function updateRangeDisplays() {
     document.getElementById('energyValue').textContent     = document.getElementById('energy').value;
 }
 
-// ── Form Handling ─────────────────────────────────────────────────────────────
+// Form Handling
 
 /** Handles the Create Session form submit event */
 async function handleSessionSubmit(e) {
@@ -62,7 +62,7 @@ async function handleSessionSubmit(e) {
     }
 }
 
-/** Client-side validation — mirrors the backend rules so the user gets instant feedback */
+/** Client-side validation **/
 function validateSessionForm() {
     const errors   = [];
     const subject  = document.getElementById('subject').value.trim();
@@ -87,11 +87,10 @@ function validateSessionForm() {
     };
 }
 
-// ── Active Session Panel ──────────────────────────────────────────────────────
+// Active Session Panel 
 
 /**
  * Reveals the active session panel and pre-fills any previously saved notes.
- * @param {number} sessionId
  */
 async function showActiveSession(sessionId) {
     currentSessionId = sessionId;
@@ -163,8 +162,6 @@ async function completeCurrentSession() {
     }
 }
 
-// ── Rendering ─────────────────────────────────────────────────────────────────
-
 /**
  * Fetches all sessions from the API, then re-renders the session cards and stats.
  */
@@ -207,8 +204,8 @@ function createSessionElement(session) {
     details.innerHTML = `
         <p>Focus: ${session.focus_score}/5 | ${session.duration} min</p>
         ${session.completed
-            ? `<p class="completed">✅ Completed ${new Date(session.completed_at).toLocaleDateString()}</p>`
-            : '<p class="pending">⏳ Pending</p>'
+            ? `<p class="completed"> Completed ${new Date(session.completed_at).toLocaleDateString()}</p>`
+            : '<p class="pending"> Pending</p>'
         }
     `;
     card.appendChild(details);
@@ -217,7 +214,7 @@ function createSessionElement(session) {
     if (!session.completed) {
         const resumeBtn = document.createElement('button');
         resumeBtn.className = 'btn btn-secondary btn-sm';
-        resumeBtn.textContent = '▶ Resume';
+        resumeBtn.textContent = ' Resume';
         resumeBtn.addEventListener('click', () => showActiveSession(session.id));
         card.appendChild(resumeBtn);
     }
@@ -225,7 +222,7 @@ function createSessionElement(session) {
     // Delete button — available on all sessions
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'btn btn-danger btn-sm';
-    deleteBtn.textContent = '🗑 Delete';
+    deleteBtn.textContent = ' Delete';
     deleteBtn.addEventListener('click', () => handleDeleteSession(session.id));
     card.appendChild(deleteBtn);
 
@@ -267,20 +264,16 @@ function renderStats(sessions) {
         : 0;
 
     document.getElementById('statsSummary').innerHTML = `
-        <h3>📊 Your Stats</h3>
+        <h3> Your Stats</h3>
         <p>Completed: ${completed}/${total} sessions</p>
         <p>Avg Effectiveness: ${avgEffectiveness}%</p>
     `;
 }
 
-// ── Utilities ─────────────────────────────────────────────────────────────────
 
 /**
  * Extracts the most-frequent meaningful keywords from a block of notes text.
  * Words shorter than 5 characters are filtered out to avoid common filler words.
- *
- * @param {string} notes
- * @returns {string[]} keywords sorted by frequency, descending
  */
 function extractKeywords(notes) {
     const words = notes
@@ -322,16 +315,16 @@ function clearValidationErrors() {
     document.querySelectorAll('input.error').forEach(el => { el.classList.remove('error'); });
 }
 
-// ── API Helper ────────────────────────────────────────────────────────────────
+// API Helper 
 
 /**
  * Sends a JSON request to the backend API and returns the parsed data payload.
  * Throws an Error with the server's message if the response is not OK.
  *
- * @param {string} method  HTTP method ('GET', 'POST', 'PUT', 'DELETE')
- * @param {string} endpoint  Path relative to API_BASE, e.g. '/sessions'
- * @param {object|null} body  Request body (will be JSON-stringified)
- * @returns {Promise<any>} The `data` field from the JSON response
+ * HTTP method ('GET', 'POST', 'PUT', 'DELETE')
+ * endpoint  Path relative to API_BASE, e.g. '/sessions'
+ * Request body (will be JSON-stringified)
+ * The `data` field from the JSON response
  */
 async function apiRequest(method, endpoint, body = null) {
     const options = {
