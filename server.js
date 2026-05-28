@@ -7,8 +7,8 @@ const express = require('express');
 const cors    = require('cors');
 const path    = require('path');
 
-const { initDb }     = require('./models/db');
-const errorHandler   = require('./middleware/errorHandler');
+const { initDb }     = require('./src/models/db');
+const errorHandler   = require('./src/middleware/errorHandler');
 
 const PORT = process.env.PORT || 3000;
 
@@ -20,15 +20,15 @@ async function startServer() {
     const app = express();
     app.locals.db = db;
 
-    // ── Global Middleware ───────────────────────────────────────────────────
+    // Global Middleware 
     app.use(cors());
     app.use(express.json());
     app.use(express.static(path.join(__dirname, 'public')));
 
-    // ── API Routes ──────────────────────────────────────────────────────────
+    // API Routes 
     // Routes are required AFTER db is on app.locals so controllers can access it
-    const sessionRoutes  = require('./routes/sessions');
-    const questionRoutes = require('./routes/questions');
+    const sessionRoutes  = require('./src/routes/sessions');
+    const questionRoutes = require('./src/routes/questions');
 
     app.use('/api/sessions',  sessionRoutes);
     app.use('/api/questions', questionRoutes);
@@ -43,7 +43,7 @@ async function startServer() {
         res.sendFile(path.join(__dirname, 'public', 'index.html'));
     });
 
-    // ── Global Error Handler (must be last) ─────────────────────────────────
+    // Global Error Handler (must be last) 
     app.use(errorHandler);
 
     app.listen(PORT, () => {
